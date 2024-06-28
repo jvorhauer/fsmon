@@ -1,5 +1,37 @@
 # fsmon
 
+FileSystem MONitor: monitor one directory/folder for changes.
+
+## Why?
+
+The client where I'm stationed at the moment is allowing remote work via Citrix.
+Unfortunately their Citrix configuration file (`.ica`) has the full screen modus activated, which is not how I like it.
+So, this little program watches a directory of choice and replaces the full screen line with a line that disables full screen.
+Then, the modified `.ica` file is opened, as my browser (Safari or Orion) does not do that automatically.
+
+## Requirements
+
+* a UNIX-like OS, such as Linux or macOS
+* Bun, version 1.1.5 or later
+* Citrix Workspace installed, version 24.02.10.6 or later
+
+## Configuration
+
+Make a `.env` file in this projects' root directory and put the line
+
+```env
+ICA_DIR=/some/where/over/the/rainbow
+```
+
+Now start the monitor with
+
+```bash
+bun run index.ts
+```
+
+
+## Original README
+
 To install dependencies:
 
 ```bash

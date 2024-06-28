@@ -1,7 +1,7 @@
 import { watch } from "node:fs"
 import { $ } from "bun"
 
-const here = "/Users/juvor/Downloads" //import.meta.dir
+const here = Bun.env.ICA_DIR || "~/downloads"
 
 const watcher = watch(here, async (event, filename) => {
 	console.info(`Detected ${event} on ${here}/${filename}`)
