@@ -1,7 +1,7 @@
-import { watch } from "node:fs"
+import { unlinkSync, watch } from "node:fs"
 import { $ } from "bun"
 
-const here = Bun.env.ICA_DIR || "~/downloads"
+const here = "/Users/juvor/Downloads" //import.meta.dir
 
 const watcher = watch(here, async (event, filename) => {
 	console.info(`Detected ${event} on ${here}/${filename}`)
@@ -11,6 +11,7 @@ const watcher = watch(here, async (event, filename) => {
 		const replaced = text.replace("DesktopViewer-ForceFullScreenStartup=On", "DesktopViewer-ForceFullScreenStartup=Off")
 		Bun.write(`/tmp/${filename}`, replaced)
 		await $`open /tmp/${filename}`
+		unlinkSync(`${here}/${filename}`)
 	}
 })
 

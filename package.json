@@ -2,11 +2,19 @@
   "name": "fsmon",
   "module": "index.ts",
   "type": "module",
+  "version": "1.0.0",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "scripts": {
+    "start": "bun index.ts",
+    "dev": "bun --watch index.ts"
+  },
+	"engines": {
+		"bun": "1.x"
+	}
 }
