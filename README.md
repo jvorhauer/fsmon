@@ -1,12 +1,12 @@
 # fsmon
 
-FileSystem MONitor: monitor one directory/folder for changes.
+FileSystem MONitor: monitor one directory/folder for the arrival of `ica` files, Citrix-specific files.
 
 ## Why?
 
 The client where I'm stationed at the moment is allowing remote work via Citrix.
 Unfortunately their Citrix configuration file (`.ica`) has the full screen modus activated, which is not how I like it.
-So, this little program watches a directory of choice and replaces the full screen line with a line that disables full screen.
+So, this little program watches a (download) directory of choice and replaces the full screen line with a line that disables full screen.
 Then, the modified `.ica` file is opened, as my browser (Safari or Orion) does not do that automatically.
 
 ## Requirements
@@ -23,12 +23,37 @@ Make a `.env` file in this projects' root directory and put the line
 ICA_DIR=/some/where/over/the/rainbow
 ```
 
-Now start the monitor with
+Now start the monitor with (with watch)
 
 ```bash
-bun run index.ts
+bun dev
 ```
 
+or (not watching for source changes)
+
+```bash
+bun start
+```
+
+## build cli executable
+
+```bash
+bun build ./parcl.ts --compile --outfile fsmon
+```
+
+then execute the result:
+
+```bash
+./fsmon
+```
+
+Add an & after that command to run in the background. Make sure all errors are handled as the program will exit on error!
+
+```bash
+./fsmon &
+```
+
+When the executable is sufficiently stable, the fsmon executable can be moved to a direcotry in the path.
 
 ## Original README
 

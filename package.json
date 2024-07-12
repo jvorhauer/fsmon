@@ -1,20 +1,28 @@
 {
-  "name": "fsmon",
-  "module": "index.ts",
-  "type": "module",
-  "version": "1.0.0",
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "scripts": {
-    "start": "bun index.ts",
-    "dev": "bun --watch index.ts"
-  },
+	"name": "fsmon",
+	"module": "index.ts",
+	"type": "module",
+	"version": "1.0.0",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.5.2"
+	},
+	"scripts": {
+		"start": "bun parcl.ts",
+		"dev": "bun --watch parcl.ts",
+		"check": "bunx biome check --write .",
+		"check-types": "tsc --noEmit --project tsconfig.json",
+		"lint": "bunx @biomejs/biome lint --write .",
+		"format": "bunx @biomejs/biome format --write ."
+	},
 	"engines": {
 		"bun": "1.x"
+	},
+	"dependencies": {
+		"@parcel/watcher": "^2.4.1",
+		"moment": "^2.30.1"
 	}
 }
