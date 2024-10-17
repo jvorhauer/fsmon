@@ -4,11 +4,11 @@
 	"type": "module",
 	"version": "1.1.0",
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.1",
+		"@biomejs/biome": "^1.9.3",
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5.5.2"
+		"typescript": "^5.6.2"
 	},
 	"scripts": {
 		"start": "bun parcl.ts",
