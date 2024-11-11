@@ -4,11 +4,12 @@
 	"type": "module",
 	"version": "1.1.0",
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.3",
-		"@types/bun": "latest"
+		"@biomejs/biome": "^1.9.4",
+		"@types/bun": "latest",
+		"eslint-plugin-neverthrow": "^1.1.4"
 	},
 	"peerDependencies": {
-		"typescript": "^5.6.2"
+		"typescript": "^5.6.3"
 	},
 	"scripts": {
 		"start": "bun parcl.ts",
@@ -18,11 +19,9 @@
 		"lint": "bunx @biomejs/biome lint --write .",
 		"format": "bunx @biomejs/biome format --write ."
 	},
-	"engines": {
-		"bun": "1.x"
-	},
 	"dependencies": {
-		"@parcel/watcher": "^2.4.1",
+		"@parcel/watcher": "^2.5.0",
 		"date-fns": "^4.1.0"
-	}
+	},
+	"trustedDependencies": ["@biomejs/biome", "@parcel/watcher"]
 }
