@@ -1,7 +1,7 @@
-import { unlinkSync } from "node:fs"
 import watcher from "@parcel/watcher"
 import { $, type ShellError } from "bun"
 import { format } from "date-fns"
+import { unlinkSync } from "node:fs"
 
 const here = process.env.ICA_DIR as string
 const DTF = "yyyy-MM-dd HH:mm:ss"
