@@ -14,10 +14,10 @@
 	"scripts": {
 		"start": "bun parcl.ts",
 		"dev": "bun --watch parcl.ts",
-		"check": "bunx biome check --write .",
+		"check": "bunx biome check --write --reporter=summary .",
 		"check-types": "tsc --noEmit --project tsconfig.json",
-		"lint": "bunx @biomejs/biome lint --write .",
-		"format": "bunx @biomejs/biome format --write ."
+		"lint": "bunx biome lint --write .",
+		"format": "bunx biome format --write ."
 	},
 	"dependencies": {
 		"@parcel/watcher": "^2.5.0",

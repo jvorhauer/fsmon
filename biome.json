@@ -10,7 +10,10 @@
 			"complexity": {
 				"noUselessFragments": "warn"
 			},
-			"correctness": { "noUnusedVariables": "error" },
+			"correctness": {
+				"noUnusedVariables": "error",
+				"noUnusedImports": "error"
+			},
 			"style": {
 				"useSingleVarDeclarator": "error",
 				"noParameterAssign": "off",
@@ -42,7 +45,13 @@
 	},
 	"json": {
 		"formatter": {
-			"trailingCommas": "none"
+			"trailingCommas": "none",
+			"indentStyle": "tab",
+			"lineWidth": 132
+		},
+		"parser": {
+			"allowComments": true,
+			"allowTrailingCommas": true
 		}
 	}
 }
