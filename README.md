@@ -2,9 +2,13 @@
 
 FileSystem MONitor: monitor one directory/folder for the arrival of `ica` files, Citrix-specific files.
 
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
+
+[![CI](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml/badge.svg)](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml)
+
 ## Why?
 
-The client where I'm stationed at the moment is allowing remote work via Citrix.
+The client where I'm stationed at the moment is allowing remote work via **Citrix**.
 Unfortunately their Citrix configuration file (`.ica`) has the full screen modus activated, which is not how I like it.
 So, this little program watches a (download) directory of choice and replaces the full screen line with a line that disables full screen.
 Then, the modified `.ica` file is opened, as my browser (Safari or Orion) does not do that automatically.
@@ -12,7 +16,7 @@ Then, the modified `.ica` file is opened, as my browser (Safari or Orion) does n
 ## Requirements
 
 * a UNIX-like OS, such as Linux or macOS
-* Bun, version 1.1.5 or later
+* Bun, version **1.1.34** or later
 * Citrix Workspace installed, version 24.02.10.6 or later
 
 ## Configuration
@@ -23,13 +27,13 @@ Make a `.env` file in this projects' root directory and put the line
 ICA_DIR=/some/where/over/the/rainbow
 ```
 
-Now start the monitor with (with watch)
+Now start the monitor with (with watch for changes)
 
 ```bash
 bun dev
 ```
 
-or (not watching for source changes)
+or (not watching for changes)
 
 ```bash
 bun start
