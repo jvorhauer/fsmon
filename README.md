@@ -1,10 +1,13 @@
 # fsmon
 
+[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
+[![CI](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml/badge.svg)](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml)
+[![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)
+[![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)](https://www.apple.com/macos/macos-sequoia/)
+
 FileSystem MONitor: monitor one directory/folder for the arrival of `ica` files, Citrix-specific files.
 
-[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
-
-[![CI](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml/badge.svg)](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml)
+*Maybe rename to ICAfixer?*
 
 ## Why?
 
@@ -39,11 +42,27 @@ or (not watching for changes)
 bun start
 ```
 
+or, if you have [just](https://github.com/casey/just) installed:
+
+```shell
+just run
+```
+
 ## build cli executable
 
-```bash
-bun build ./parcl.ts --compile --outfile fsmon
+Building a standalone executable can be achieved by running
+
+```shell
+bun build
 ```
+
+or, if you have [just](https://github.com/casey/just) installed:
+
+```shell
+just build
+```
+
+which will execute the tsc types checker and the Biome check!
 
 then execute the result:
 
@@ -59,18 +78,3 @@ Add an & after that command to run in the background. Make sure all errors are h
 
 When the executable is sufficiently stable, the fsmon executable can be moved to a direcotry in the path.
 
-## Original README
-
-To install dependencies:
-
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.15. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
