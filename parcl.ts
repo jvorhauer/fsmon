@@ -27,10 +27,10 @@ const subs = await watcher.subscribe(here, async (_err, events) => {
 		}
 	}
 })
-console.info(`> ${now()} Started watcher on /Users/juvor/Downloads`)
+console.info(`${now()} Started watcher on /Users/juvor/Downloads`)
 
 process.on("SIGINT", async () => {
-	console.info(`< ${now()} - Closing watcher...`)
+	console.info(`${now()} - Closing watcher...`)
 	await subs.unsubscribe()
 	process.exit(0)
 })

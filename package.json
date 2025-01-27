@@ -8,7 +8,7 @@
 		"@types/bun": "latest"
 	},
 	"peerDependencies": {
-		"typescript": "^5.7.2"
+		"typescript": "^5.7.3"
 	},
 	"scripts": {
 		"start": "bun parcl.ts",
@@ -20,8 +20,9 @@
 		"build": "bun build ./parcl.ts --compile --outfile fsmon"
 	},
 	"dependencies": {
-		"@parcel/watcher": "^2.5.0",
+		"@parcel/watcher": "^2.5.1",
+		"arktype": "^2.0.3",
 		"date-fns": "^4.1.0"
 	},
-	"trustedDependencies": ["@biomejs/biome", "@parcel/watcher"]
+	"trustedDependencies": ["@biomejs/biome", "@parcel/watcher", "typescript"]
 }

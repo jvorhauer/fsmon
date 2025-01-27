@@ -1,3 +1,2 @@
 [install]
-saveTestLockFile = true
-
+saveTextLockFile = true
