@@ -1,5 +1,5 @@
 {
-  "name": "fsmon",
+	"name": "fsmon",
   "module": "parcl.ts",
   "type": "module",
   "version": "1.1.0",
