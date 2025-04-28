@@ -1,28 +1,25 @@
 {
-	"name": "fsmon",
-	"module": "parcl.ts",
-	"type": "module",
-	"version": "1.1.0",
-	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5.7.3"
-	},
-	"scripts": {
-		"start": "bun parcl.ts",
-		"dev": "bun --watch parcl.ts",
-		"check": "bunx biome check --write --reporter=summary .",
-		"check-types": "tsc --noEmit --project tsconfig.json",
-		"lint": "bunx biome lint --write .",
-		"format": "bunx biome format --write .",
-		"build": "bun build ./parcl.ts --compile --outfile fsmon"
-	},
-	"dependencies": {
-		"@parcel/watcher": "^2.5.1",
-		"arktype": "^2.0.3",
-		"date-fns": "^4.1.0"
-	},
-	"trustedDependencies": ["@biomejs/biome", "@parcel/watcher", "typescript"]
+  "name": "fsmon",
+  "module": "parcl.ts",
+  "type": "module",
+  "version": "1.1.0",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@parcel/watcher": "^2.5.1",
+    "date-fns": "^4.1.0"
+  },
+  "scripts": {
+    "start": "bun parcl.ts",
+    "dev": "bun --watch parcl.ts",
+    "check-types": "tsc --noEmit --project tsconfig.json",
+    "build": "bun build ./parcl.ts --compile --outfile fsmon"
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "typescript",
+    "date-fns"
+  ]
 }
