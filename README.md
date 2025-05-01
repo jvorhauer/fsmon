@@ -1,7 +1,6 @@
 # fsmon
 
-[![Formatted with Biome](https://img.shields.io/badge/Formatted_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev/)
-[![CI](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml/badge.svg)](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml)
+[![CI](https://github.com/jvorhauer/fsmon/actions/workflows/biome.yaml/badge.svg)](https://github.com/jvorhauer/fsmon/actions/workflows/test.yml)
 [![Bun](https://img.shields.io/badge/Bun-%23000000.svg?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh)
 [![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)](https://www.apple.com/macos/macos-sequoia/)
 
@@ -42,27 +41,13 @@ or (not watching for changes)
 bun start
 ```
 
-or, if you have [just](https://github.com/casey/just) installed:
-
-```shell
-just run
-```
-
 ## build cli executable
 
 Building a standalone executable can be achieved by running
 
-```shell
+```sh
 bun build
 ```
-
-or, if you have [just](https://github.com/casey/just) installed:
-
-```shell
-just build
-```
-
-which will execute the tsc types checker and the Biome check!
 
 then execute the result:
 

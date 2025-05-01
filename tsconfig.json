@@ -1,13 +1,13 @@
 {
 	"compilerOptions": {
-		"lib": ["es2022"],
+		"lib": ["es2022", "DOM"],
 		"target": "es2022",
-		"module": "NodeNext",
+		"module": "ES2022",
 		"moduleDetection": "force",
 		"allowJs": true,
 		"esModuleInterop": true,
 
-		"moduleResolution": "NodeNext",
+		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"noEmit": true,

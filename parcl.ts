@@ -1,38 +1,54 @@
 import watcher from "@parcel/watcher"
-import { $, ShellError } from "bun"
-import { format } from "date-fns"
-import { unlinkSync } from "node:fs"
+import { $ } from "bun"
+import { unlink } from "node:fs"
+import adze, { setup } from "adze"
+import { format } from "date-fns/format"
+
+setup({
+	activeLevel: 3,
+	format: "pretty",
+	timestampFormatter: (date: Date) => format(date, "yyyy-MM-dd HH:mm:ss")
+})
+const logger = adze.withEmoji.timestamp.seal()
 
 const here = process.env.ICA_DIR as string
-const DTF = "yyyy-MM-dd HH:mm:ss"
-const now = () => format(new Date(), DTF)
+const info = (msg: string) => logger.info(msg)
+const error = (msg: string) => logger.error(msg)
+
+const open = (filename: string): void => {
+	($`open ${filename}`).catch((err) => {
+		const { message, exitCode } = err as $.ShellError
+		error(`opening ${filename} failed with error ${message} (${exitCode})`)
+	})
+}
+
+export const del = (filename: string): void => {
+	unlink(filename, (err) => {
+		err ? error(`error unlinking ${filename}: ${err.message}`) : info(`${filename} was deleted`)
+	})
+}
 
 const subs = await watcher.subscribe(here, async (_err, events) => {
-  for (const event of events) {
-    if (event.type === "create" && event.path.endsWith(".ica")) {
-      console.info(`${now()} - ${event.path} was created`)
-      const file = Bun.file(event.path)
-      if (file.size > 0) {
-        const text = await file.text()
-        const replaced = text.replace("DesktopViewer-ForceFullScreenStartup=On", "DesktopViewer-ForceFullScreenStartup=Off")
-        Bun.write(`/tmp/${file.name}`, replaced);
-        try {
-          await $`open /tmp/${file.name}`
-        } catch (e) {
-          const se = e as ShellError
-          console.error(
-            `${now()} - Opening ${file.name} failed with exit code ${se.exitCode}`,
-          )
-        }
-        unlinkSync(`${event.path}`)
-      }
-    }
-  }
-});
-console.info(`${now()} Started watcher on /Users/juvor/Downloads`)
+	events
+		.filter((evt) => evt.type === "create" && evt.path.endsWith(".ica"))
+		.map((evt) => {
+			info(`${evt.path} was created`)
+			return Bun.file(evt.path)
+		})
+		.filter((file) => file.size > 0)
+		.forEach(async (file) => {
+			const text = await file.text()
+				.then((txt) => txt.replace("DesktopViewer-ForceFullScreenStartup=On", "DesktopViewer-ForceFullScreenStartup=Off"))
+			const outfile = `/tmp/${file.name}`
+			await Bun.write(outfile, text)
+			open(outfile)
+			del(file.name!)
+		})
+})
+info(`started watcher on ${here}`)
 
 process.on("SIGINT", async () => {
-  console.info(`${now()} - Closing watcher...`)
-  await subs.unsubscribe()
-  process.exit(0)
-});
+	info("closing watcher.")
+	await subs.unsubscribe()
+	process.exit(0)
+})
