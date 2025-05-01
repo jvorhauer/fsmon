@@ -11,11 +11,11 @@ setup({
 })
 const logger = adze.withEmoji.timestamp.seal()
 
-const here = process.env.ICA_DIR as string
+const here = (process.env.ICA_DIR ?? "/tmp") as string
 const info = (msg: string) => logger.info(msg)
 const error = (msg: string) => logger.error(msg)
 
-const open = (filename: string): void => {
+export const open = (filename: string): void => {
 	($`open ${filename}`).catch((err) => {
 		const { message, exitCode } = err as $.ShellError
 		error(`opening ${filename} failed with error ${message} (${exitCode})`)
